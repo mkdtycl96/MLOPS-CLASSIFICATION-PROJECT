@@ -46,7 +46,7 @@ pipeline {
 
                         gcloud config set project ${GCP_PROJECT}
 
-                        gcloud auth configure-docker --quiet
+                        gcloud auth configure-docker us-central1-docker.pkg.dev
 
 
                         docker build -t us-central1-docker.pkg.dev/${GCP_PROJECT}/ml-artifacts/ml-project:latest .
