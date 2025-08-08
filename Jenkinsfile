@@ -46,13 +46,12 @@ pipeline {
 
                         gcloud config set project ${GCP_PROJECT}
 
-                        gcloud artifacts docker upgrade migrate --projects=${GCP_PROJECT}
-
                         gcloud auth configure-docker --quiet
 
-                        docker build -t gcr.io/${GCP_PROJECT}/ml-project:lastest .
 
-                        docker push gcr.io/${GCP_PROJECT}/ml-project:lastest 
+                        docker build -t us-central1-docker.pkg.dev/${GCP_PROJECT}/ml-artifacts/ml-project:latest .
+
+                        docker push us-central1-docker.pkg.dev/${GCP_PROJECT}/ml-artifacts/ml-project:latest
 
                         '''
                     }
@@ -74,7 +73,7 @@ pipeline {
                         gcloud config set project ${GCP_PROJECT}
 
                         gcloud run deploy ml-project \
-                            --image=gcr.io/${GCP_PROJECT}/ml-project:lastest \
+                            --image=us-central1-docker.pkg.dev/${GCP_PROJECT}/ml-artifacts/ml-project:latest \
                             --platform=managed \
                             --region=us-central1 \
                             --allow=unauthenticated
