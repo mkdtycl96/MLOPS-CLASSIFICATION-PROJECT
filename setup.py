@@ -9,7 +9,7 @@ setup(
      version = "0.1",
      author = "Mikdat",
      packages = find_packages(),
-     intstall_requires = requirements,   
+     install_requires = requirements,   
  
 
 )   
